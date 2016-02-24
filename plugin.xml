@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing,
+  software distributed under the License is distributed on an
+  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  KIND, either express or implied.  See the License for the
+  specific language governing permissions and limitations
+  under the License.
+-->
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.grandshooting.barcodedevice"
+    version="0.2.14-dev">
+    <name>BarcodeDevice</name>
+    <description>Cordova Barcode Device Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,barcodedevice</keywords>
+    
+    <js-module src="www/barcodedevice.js" name="barcodedevice">
+        <clobbers target="barcodedevice" />
+    </js-module>
+
+   
+
+    <!-- android -->
+    <!--
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Device" >
+                <param name="android-package" value="org.apache.cordova.device.Device"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/Device.java" target-dir="src/org/apache/cordova/device" />
+    </platform>
+-->
+
+   
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="BarcodeDevice">
+                <param name="ios-package" value="CDVBarcodeDevice"/>
+            </feature>
+        </config-file>
+        <config-file target="*-Info.plist" parent="UISupportedExternalAccessoryProtocols">
+              <array>
+                <string>com.koamtac.kdc</string>
+              </array>
+        </config-file>
+         <js-module src="www/barcodedevice.js" name="barcodedevice">
+            <clobbers target="barcodedevice" />
+        </js-module>
+
+        <header-file src="src/ios/CDVBarcodeDevice.h" />
+
+        <header-file src="src/ios/KDCReader.h" />
+        <header-file src="src/ios/KDCConstants.h" />
+        
+        <source-file src="src/ios/CDVBarcodeDevice.m" />
+        <source-file src="src/ios/iOS/libKDCReader.a" framework="true" />
+        <!--<source-file src="src/ios/Simulator/libKDCReader.a" framework="true" /> -->
+    </platform>
+
+    
+
+</plugin>
